@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Persons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="webjars/bootstrap/4.6.0-1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Persons</h1>
+    </div>
+    <form action="#" method="post" th:object="${form}">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Birth date</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person : *{persons}">
+                <th><input th:field="*{persons[__${personStat.index}__].id}"        value="1"          class="form-control-plaintext" readonly size="2" /></th>
+                <td><input th:field="*{persons[__${personStat.index}__].firstName}" value="Nicolas"    class="form-control" /></td>
+                <td><input th:field="*{persons[__${personStat.index}__].lastName}"  value="Fränkel"    class="form-control" /></td>
+                <td><input th:field="*{persons[__${personStat.index}__].birthdate}" value="1975-01-01" class="form-control" type="datetime-local" /></td>
+                <td>
+                    <button type="submit" class="btn btn-outline-primary btn-block" th:formaction="'/update/' + ${personStat.index}">
+                        Update
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>
