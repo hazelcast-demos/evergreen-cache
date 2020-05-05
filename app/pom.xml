@@ -8,6 +8,9 @@
         <version>1.0</version>
     </parent>
     <artifactId>app</artifactId>
+    <properties>
+        <hazelcast.version>4.2</hazelcast.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -50,6 +53,16 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-spring</artifactId>
+            <version>${hazelcast.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>${hazelcast.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
