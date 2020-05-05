@@ -1,0 +1,15 @@
+<hazelcast xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config
+                               https://www.hazelcast.com/schema/config/hazelcast-config-4.0.xsd">
+    <instance-name>hazelcastInstance</instance-name>
+    <management-center />
+    <map name="entities">
+        <in-memory-format>OBJECT</in-memory-format>
+        <backup-count>0</backup-count>
+    </map>
+    <map name="query">
+        <in-memory-format>OBJECT</in-memory-format>
+        <backup-count>0</backup-count>
+    </map>
+</hazelcast>
