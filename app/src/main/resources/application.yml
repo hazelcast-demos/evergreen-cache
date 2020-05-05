@@ -1,0 +1,5 @@
+logging:
+  level:
+    org:
+      hazelcast.evergreencache: DEBUG
+      springframework.jdbc.core: DEBUG
