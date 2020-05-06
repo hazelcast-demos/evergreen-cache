@@ -1,0 +1,35 @@
+version: '3'
+services:
+  app:
+    container_name: evergreen-app
+    image: hazelcast/evergreencache/app:1.0
+    environment:
+      SPRING_PROFILES_ACTIVE: deploy
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      MYSQL_HOST: evergreen-db
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+  management_center:
+    container_name: evergreen-mc
+    image: hazelcast/management-center:4.2021.04
+    environment:
+      MC_HTTP_PORT: 8081
+      MC_INIT_CMD: >-
+        ./mc-conf.sh dev-mode configure;
+        ./mc-conf.sh cluster add --lenient -H=/data -cn=dev -ma=evergreen-app -v
+    ports:
+      - 8081:8081
+    depends_on:
+      - app
+  database:
+    container_name: evergreen-db
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker:/docker-entrypoint-initdb.d
