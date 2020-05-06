@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>app</module>
+        <module>update</module>
     </modules>
     <properties>
         <java.version>11</java.version>
