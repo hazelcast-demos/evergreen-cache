@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    hikari.initializationFailTimeout: 20000
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT:3306}/app
