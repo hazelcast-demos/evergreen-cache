@@ -3,3 +3,5 @@ logging:
     org:
       hazelcast.evergreencache: DEBUG
       springframework.jdbc.core: DEBUG
+spring:
+  datasource.driver-class-name: org.h2.Driver
