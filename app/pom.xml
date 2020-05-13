@@ -33,38 +33,6 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
-                <version>2.6.0</version>
-                <configuration>
-                    <to>
-                        <image>hazelcast/evergreencache/app:${project.version}</image>
-                    </to>
-                    <container>
-                        <jvmFlags>
-                            <jvmFlag>--add-modules</jvmFlag>
-                            <jvmFlag>java.se</jvmFlag>
-                            <jvmFlag>--add-exports</jvmFlag>
-                            <jvmFlag>java.base/jdk.internal.ref=ALL-UNNAMED</jvmFlag>
-                            <jvmFlag>--add-opens</jvmFlag>
-                            <jvmFlag>java.base/java.lang=ALL-UNNAMED</jvmFlag>
-                            <jvmFlag>--add-opens</jvmFlag>
-                            <jvmFlag>java.base/java.nio=ALL-UNNAMED</jvmFlag>
-                            <jvmFlag>--add-opens</jvmFlag>
-                            <jvmFlag>java.base/sun.nio.ch=ALL-UNNAMED</jvmFlag>
-                            <jvmFlag>--add-opens</jvmFlag>
-                            <jvmFlag>java.management/sun.management=ALL-UNNAMED</jvmFlag>
-                            <jvmFlag>--add-opens</jvmFlag>
-                            <jvmFlag>jdk.management/com.sun.management.internal=ALL-UNNAMED</jvmFlag>
-                        </jvmFlags>
-                    </container>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>dockerBuild</goal>
-                        </goals>
-                        <phase>compile</phase>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
