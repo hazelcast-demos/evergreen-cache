@@ -12,6 +12,18 @@ services:
       - 8080:8080
     depends_on:
       - database
+  pipeline:
+    container_name: evergreen-pipeline
+    image: hazelcast/evergreencache/pipeline:1.0
+    environment:
+      MYSQL_HOST: evergreen-db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      WAIT_TIME: 12000
+      CACHE_HOST: evergreen-app
+    depends_on:
+      - database
+      - app
   management_center:
     container_name: evergreen-mc
     image: hazelcast/management-center:4.2021.04
@@ -19,7 +31,8 @@ services:
       MC_HTTP_PORT: 8081
       MC_INIT_CMD: >-
         ./mc-conf.sh dev-mode configure;
-        ./mc-conf.sh cluster add --lenient -H=/data -cn=dev -ma=evergreen-app -v
+        ./mc-conf.sh cluster add --lenient -H=/data -cn=dev -ma=evergreen-app -v;
+        ./mc-conf.sh cluster add --lenient -H=/data -cn=jet -ma=evergreen-pipeline -v
     ports:
       - 8081:8081
     depends_on:
@@ -27,6 +40,7 @@ services:
   database:
     container_name: evergreen-db
     image: mysql:8.0
+    command: mysqld --log-bin=ON --binlog_format=ROW --server-id=1 --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
