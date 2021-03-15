@@ -10,7 +10,7 @@
     <artifactId>app</artifactId>
     <properties>
         <spring-boot.version>2.4.3</spring-boot.version>
-        <hazelcast.version>4.1.1</hazelcast.version>
+        <hazelcast.version>4.1.2</hazelcast.version>
     </properties>
     <dependencyManagement>
         <dependencies>
