@@ -9,7 +9,7 @@
     </parent>
     <artifactId>app</artifactId>
     <properties>
-        <hazelcast.version>5.0</hazelcast.version>
+        <hazelcast.version>5.0.4</hazelcast.version>
     </properties>
     <dependencyManagement>
         <dependencies>
